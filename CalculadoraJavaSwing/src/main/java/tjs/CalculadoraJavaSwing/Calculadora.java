@@ -14,13 +14,12 @@ public class Calculadora {
 	private JFrame frame;
 	private JTextField Mostrar;
 
-	public String acum = "";// VARIABLE QUE ACUMULA EL VALOR DIJITADO
-	public double a; // VARIABLE QUE ALMACENA EL PRIMER VALOR DIJITADO
+	public String acum = "";// VARIABLA QUE ACUMULA EL VALOR ENTRAT
+	public double a; // VARIABLE QUE EMMAGATZEMA EL PRIMER VALOR ENTRAT
 
-	public double op;// VARIABLE QUE ALMACENA EL VALOR DIGITADO Y REALIZA LA
-						// OPERACION SEGUN EL SIGNO.
-	public String c = "";// AQUI GUARDAMOS EL SIGNO DE LA OPERACION PARA LUEGO
-							// SER LLAMADO EN LA CONDICION
+	public double op;// VARIABLA PER REALITZAR OPERACIONS
+	public String c = "";// GUARDEM EL SIGNE DE L'OPERACIÓ PER DESPRÉS CRIDAR-LO EN LA CADICIÓ
+	
 
 	/**
 	 * Launch the application.
@@ -183,20 +182,26 @@ public class Calculadora {
 				Mostrar.setText(acum);
 			}
 		});
+		
+		B_Punt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				acum = Mostrar.getText() + ".";
+				Mostrar.setText(acum);
+			}
+		});
 
-		B_Mes.addActionListener(new ActionListener() {// BOTON QUE REALIZA LA
-														// OPERACION DE SUMAR
+		B_Mes.addActionListener(new ActionListener() {// BOTÓ +
 			public void actionPerformed(ActionEvent e) {
 				acum = Mostrar.getText();
 				a = (Double.parseDouble(acum));
 				c = "+";
 
 				Mostrar.setText("");
+				
 			}
 		});
 
-		B_Menys.addActionListener(new ActionListener() {// BOTON QUE REALIZA LA
-														// OPERACION DE RESTA
+		B_Menys.addActionListener(new ActionListener() {// BOTÓ -
 			public void actionPerformed(ActionEvent e) {
 				acum = Mostrar.getText();
 				a = (Double.parseDouble(acum));
@@ -204,11 +209,7 @@ public class Calculadora {
 				Mostrar.setText("");
 			}
 		});
-		B_CE.addActionListener(new ActionListener() {// BOTON QUE REALIZA LA
-														// OPERACION DE BORRAR
-														// LOS NUMEROS QUE
-														// APARECEN EN LA CAJA
-														// DE TEXTO
+		B_CE.addActionListener(new ActionListener() {// BOTÓ QUE HO BORRA TOT
 			public void actionPerformed(ActionEvent e) {
 				acum = "";
 
@@ -216,16 +217,19 @@ public class Calculadora {
 			}
 		});
 
-		B_Igual.addActionListener(new ActionListener() {// BOTON IGUAL
+		B_Igual.addActionListener(new ActionListener() {// BOTÓ IGUAL
 			public void actionPerformed(ActionEvent e) {
 
 				acum = Mostrar.getText();
+				
+				if(acum=="666.0"){
+					Mostrar.setText("Error");
+				}
 				double b = (Double.parseDouble(acum));
 
 				Calc obj = new Calc();
 
-				if (c == "+") {// CONDICION PARA C "VARIABLE QUE ALMACENA LOS
-								// SIGNOS"
+				if (c == "+") {
 
 					Mostrar.setText(String.valueOf(obj.suma(a, b)));
 				} else {
@@ -239,6 +243,9 @@ public class Calculadora {
 			}
 
 		});
+		
+		
+		
 
 	}
 }
