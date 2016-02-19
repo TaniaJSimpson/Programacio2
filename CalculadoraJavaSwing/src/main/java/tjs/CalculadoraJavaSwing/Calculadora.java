@@ -121,9 +121,7 @@ public class Calculadora {
 
 		B_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				acum = Mostrar.getText() + "1";
-
 				Mostrar.setText(acum);
 			}
 		});
@@ -217,7 +215,7 @@ public class Calculadora {
 			}
 		});
 
-		B_Igual.addActionListener(new ActionListener() {// BOTÓ IGUAL
+		B_Igual.addActionListener(new ActionListener() {// BOTÓ =
 			public void actionPerformed(ActionEvent e) {
 
 				acum = Mostrar.getText();
